@@ -65,11 +65,7 @@ const SneakerCards = () => {
       <div className="row">
         {/* CARD 1 */}
         <div className="col">
-          <button
-            className="card bg-dark"
-            data-toggle="modal"
-            data-target="#myModal3"
-          >
+          <div className="card bg-dark">
             <div className="profile-card text-center">
               <div className="profile-info">
                 <img
@@ -84,16 +80,18 @@ const SneakerCards = () => {
                 <h6>YOYO</h6>
               </div>
             </div>
-          </button>
+          </div>
           <p>
             <button
               className="btn btn-primary btn-sm"
+              data-toggle="modal"
+              data-target="#myModal3"
               onClick={() => setCurrent(sneaker)}
             >
               Customize
             </button>
             <button className="btn btn-danger btn-sm" onClick={onDelete}>
-              Delete
+              Details
             </button>
           </p>
         </div>
@@ -217,7 +215,7 @@ const SneakerCards = () => {
               Customize
             </button>
             <button className="btn btn-danger btn-sm" onClick={onDelete}>
-              Delete
+              Details
             </button>
           </p>
         </div>
@@ -343,7 +341,7 @@ const SneakerCards = () => {
                 Customize
               </button>
               <button className="btn btn-danger btn-sm" onClick={onDelete}>
-                Delete
+                Details
               </button>
             </p>
             {/* Modal */}
@@ -471,7 +469,7 @@ const SneakerCards = () => {
                 Customize
               </button>
               <button className="btn btn-danger btn-sm" onClick={onDelete}>
-                Delete
+                Details
               </button>
             </p>
           </div>

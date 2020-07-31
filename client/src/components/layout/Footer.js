@@ -1,5 +1,6 @@
 import React from "react";
 import { Footer } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Footerr = () => {
   return (
@@ -8,45 +9,31 @@ const Footerr = () => {
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">Footer Content</h5>
+              <h5 class="white-text">Kickin' It</h5>
               <p class="grey-text text-lighten-4">
-                You can use rows and columns here to organize your footer
-                content.
+                Buy your latest and exclusive sneakers here today!!! All
+                sneakerheads accomodated
               </p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
+              <h5 class="white-text">Navigate</h5>
               <ul>
                 <li>
-                  <a class="grey-text text-lighten-3" href="#!">
-                    Link 1
-                  </a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a class="grey-text text-lighten-3" href="#!">
-                    Link 2
-                  </a>
+                  <Link to="/register">Register</Link>
                 </li>
                 <li>
-                  <a class="grey-text text-lighten-3" href="#!">
-                    Link 3
-                  </a>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li>
-                  <a class="grey-text text-lighten-3" href="#!">
-                    Link 4
-                  </a>
+                  <li>
+                    <Link to="/about">About</Link>
+                  </li>
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">
-              More Links
-            </a>
           </div>
         </div>
       </footer>

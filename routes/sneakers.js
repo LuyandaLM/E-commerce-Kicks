@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 const Sneaker = require("../models/Sneaker");
+
 // @route GET api/sneakers
 // @desc Get all users sneakers
 // @access Private
