@@ -1,65 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
-import PropTypes from "prop-types";
-import SneakerContext from "../../context/sneaker/sneakerContext";
+import React from "react";
 
 const SneakerCards = () => {
-  const sneakerContext = useContext(SneakerContext);
-
-  const {
-    getSneaker,
-    addSneaker,
-    updateSneaker,
-    deleteSneaker,
-    current,
-    clearCurrent,
-    setCurrent,
-  } = sneakerContext;
-
-  const onDelete = () => {
-    deleteSneaker(_id);
-    clearCurrent();
-  };
-
-  useEffect(() => {
-    if (current !== null) {
-      setSneaker(current);
-    } else {
-      setSneaker({
-        make: "",
-        brand: "",
-        price: "",
-        type: "exclusive",
-        size: "",
-      });
-    }
-  }, [getSneaker, sneakerContext, current]);
-
-  const [sneaker, setSneaker] = useState({
-    make: "",
-    brand: "",
-    price: "",
-    type: "exclusive",
-    size: "",
-  });
-
-  const { _id, make, brand, price, type, size } = sneaker;
-
-  const onChange = (e) =>
-    setSneaker({ ...sneaker, [e.target.name]: e.target.value });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (current === null) {
-      addSneaker(sneaker);
-    } else {
-      updateSneaker(sneaker);
-    }
-    clearAll();
-  };
-  const clearAll = () => {
-    clearCurrent();
-  };
-
   return (
     <div className="container">
       <div className="row">
@@ -71,115 +12,16 @@ const SneakerCards = () => {
                 <img
                   className="profile-pic"
                   style={{ width: "50%", height: "50%" }}
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/a73bc3ac-c29c-4932-89f4-90456cc4d831/air-force-1-07-craft-shoe-5zFRLc.jpg"
+                  src="https://render.nikeid.com/is/image/nikeid/?layer=0&src=ir(nikeidrender/af1LowEssSP20_v2?obj=/s/shadow/shad&show=&color=000000&obj=/s/g15&color=325452&show=&obj=/s/g14&color=2c4f4d&show=&obj=/s/g13&color=f5efff&show=&obj=/s/g12&color=eeeffa&show=&obj=/s/g17&color=eff0f8&show=&obj=/s/g16&color=225557&show=&obj=/s/g1/leather&color=fdf8f5&show=&obj=/s/g2/leather&color=fdf8f5&show=&obj=/s/g3/leather&color=fdf8f5&show=&obj=/s/g4/leather&color=164f4c&show=&obj=/s/g5/leather&color=164f4c&show=&obj=/s/g6/ripple&color=0F524B&show=&obj=/s/g7/leather&color=164f4c&show=&obj=/s/g8/leather&color=fdf8f5&show=&obj=/s/g18/solid&color=fdf8f5&show=&obj=/s/g20&color=F5F4FF&show=&obj=/s/g23/OG&color=fefbf9&show=&obj=/s/g19&color=fdf5f1&show=&obj=/s/g21/solid&color=fdf8f5&show=&obj=/s&req=object&fmt=png-alpha&icc=AdobeRGB)bgc=f5f5f5&fmt=jpeg&qlt=90&posN=0,-0.1&icc=AdobeRGB&wid=1728"
                   alt="Sneakers"
                 />
-                <h2> Air Force 1</h2>
-                <h6>YOYO</h6>
-                <h6>YOYO</h6>
-                <h6>YOYO</h6>
-              </div>
-            </div>
-          </div>
-          <p>
-            <button
-              className="btn btn-primary btn-sm"
-              data-toggle="modal"
-              data-target="#myModal3"
-              onClick={() => setCurrent(sneaker)}
-            >
-              Customize
-            </button>
-            <button className="btn btn-danger btn-sm" onClick={onDelete}>
-              Details
-            </button>
-          </p>
-        </div>
-        {/* Modal */}
-        <div id="myModal3" className="modal fade" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Profile Details</h4>
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-              </div>
-
-              <div className="modal-body">
-                <form onSubmit={onSubmit}>
-                  <h2 className="text-primary">Sneakers</h2>
-                  <input
-                    type="text"
-                    placeholder="Make"
-                    name="make"
-                    value={make}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Brand"
-                    name="brand"
-                    value={brand}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    name="price"
-                    value={price}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Size"
-                    name="size"
-                    value={size}
-                    onChange={onChange}
-                  />
-                  {/* <!-- Switch --> */}
-                  <div className="switch">
-                    <label>
-                      Available
-                      <input type="checkbox" name="type" />
-                      <span className="lever"></span>
-                    </label>
-                  </div>
-                  <h5>Sneakerton</h5>
-                  <input
-                    type="radio"
-                    name="type"
-                    value="exclusive"
-                    checked={type === "exclusive"}
-                    onChange={onChange}
-                  />{" "}
-                  Exclusive{" "}
-                  <input
-                    type="radio"
-                    name="type"
-                    value="standard"
-                    checked={type === "standard"}
-                    onChange={onChange}
-                  />{" "}
-                  Standard{" "}
-                  <div>
-                    <input
-                      type="submit"
-                      value={current ? "Update Sneaker" : "Add Sneaker"}
-                      className="btn btn-block"
-                    />
-                  </div>
-                  {current && (
-                    <div>
-                      <button
-                        className="btn btn-dark btn-block"
-                        onClick={clearAll}
-                      >
-                        Clear
-                      </button>
-                    </div>
-                  )}
-                </form>
+                <h2>Nike Air Force 1 Low</h2>
+                <h6>
+                  Price: <b>R1599</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>7</b>
+                </h6>
               </div>
             </div>
           </div>
@@ -197,379 +39,127 @@ const SneakerCards = () => {
                 <img
                   className="profile-pic"
                   style={{ width: "50%", height: "50%" }}
-                  src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/a73bc3ac-c29c-4932-89f4-90456cc4d831/air-force-1-07-craft-shoe-5zFRLc.jpg"
+                  src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/9fe97a98-2dda-492b-909a-10c1f208453f/air-jordan-1-mid-shoe-RRTg1P1y.jpg"
                   alt="Sneakers"
                 />
-                <h2> Air Force 1</h2>
-                <h6>YOYO</h6>
-                <h6>YOYO</h6>
-                <h6>YOYO</h6>
+                <h2>Nike Air Jordan 1 Mid</h2>
+                <h6>
+                  Price: <b>R2399</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>6,8,9</b>
+                </h6>
               </div>
             </div>
           </button>
-          <p>
-            <button
-              className="btn btn-primary btn-sm"
-              onClick={() => setCurrent(sneaker)}
-            >
-              Customize
-            </button>
-            <button className="btn btn-danger btn-sm" onClick={onDelete}>
-              Details
-            </button>
-          </p>
         </div>
+      </div>
 
-        {/* Modal */}
-        <div id="myModal4" className="modal fade" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Profile Details</h4>
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-              </div>
-
-              <div className="modal-body">
-                <form onSubmit={onSubmit}>
-                  <h2 className="text-primary">Sneakers</h2>
-                  <input
-                    type="text"
-                    placeholder="Make"
-                    name="make"
-                    value={make}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Brand"
-                    name="brand"
-                    value={brand}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    name="price"
-                    value={price}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Size"
-                    name="size"
-                    value={size}
-                    onChange={onChange}
-                  />
-                  {/* <!-- Switch --> */}
-                  <div className="switch">
-                    <label>
-                      Available
-                      <input type="checkbox" name="type" />
-                      <span className="lever"></span>
-                    </label>
-                  </div>
-                  <h5>Sneakerton</h5>
-                  <input
-                    type="radio"
-                    name="type"
-                    value="exclusive"
-                    checked={type === "exclusive"}
-                    onChange={onChange}
-                  />{" "}
-                  Exclusive{" "}
-                  <input
-                    type="radio"
-                    name="type"
-                    value="standard"
-                    checked={type === "standard"}
-                    onChange={onChange}
-                  />{" "}
-                  Standard{" "}
-                  <div>
-                    <input
-                      type="submit"
-                      value={current ? "Update Sneaker" : "Add Sneaker"}
-                      className="btn btn-block"
-                    />
-                  </div>
-                  {current && (
-                    <div>
-                      <button
-                        className="btn btn-dark btn-block"
-                        onClick={clearAll}
-                      >
-                        Clear
-                      </button>
-                    </div>
-                  )}
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div className="row">
         {/* CARD 3 */}
-        <div className="row">
-          <div className="col">
-            <button
-              className="card bg-dark"
-              data-toggle="modal"
-              data-target="#myModal5"
-            >
-              <div className="profile-card text-center">
-                <div className="profile-info">
-                  <img
-                    className="profile-pic"
-                    style={{ width: "50%", height: "50%" }}
-                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/a73bc3ac-c29c-4932-89f4-90456cc4d831/air-force-1-07-craft-shoe-5zFRLc.jpg"
-                    alt="Sneakers"
-                  />
-                  <h2> Air Force 1</h2>
-                  <h6>YOYO</h6>
-                  <h6>YOYO</h6>
-                  <h6>YOYO</h6>
-                </div>
-              </div>
-            </button>
-            <p>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={() => setCurrent(sneaker)}
-              >
-                Customize
-              </button>
-              <button className="btn btn-danger btn-sm" onClick={onDelete}>
-                Details
-              </button>
-            </p>
-            {/* Modal */}
-            <div id="myModal5" className="modal fade" role="dialog">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h4 className="modal-title">Profile Details</h4>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                    >
-                      &times;
-                    </button>
-                  </div>
-
-                  <div className="modal-body">
-                    <form onSubmit={onSubmit}>
-                      <h2 className="text-primary">Sneakers</h2>
-                      <input
-                        type="text"
-                        placeholder="Make"
-                        name="make"
-                        value={make}
-                        onChange={onChange}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Brand"
-                        name="brand"
-                        value={brand}
-                        onChange={onChange}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Price"
-                        name="price"
-                        value={price}
-                        onChange={onChange}
-                      />
-                      <input
-                        type="text"
-                        placeholder="Size"
-                        name="size"
-                        value={size}
-                        onChange={onChange}
-                      />
-                      {/* <!-- Switch --> */}
-                      <div className="switch">
-                        <label>
-                          Available
-                          <input type="checkbox" name="type" />
-                          <span className="lever"></span>
-                        </label>
-                      </div>
-                      <h5>Sneakerton</h5>
-                      <input
-                        type="radio"
-                        name="type"
-                        value="exclusive"
-                        checked={type === "exclusive"}
-                        onChange={onChange}
-                      />{" "}
-                      Exclusive{" "}
-                      <input
-                        type="radio"
-                        name="type"
-                        value="standard"
-                        checked={type === "standard"}
-                        onChange={onChange}
-                      />{" "}
-                      Standard{" "}
-                      <div>
-                        <input
-                          type="submit"
-                          value={current ? "Update Sneaker" : "Add Sneaker"}
-                          className="btn btn-block"
-                        />
-                      </div>
-                      {current && (
-                        <div>
-                          <button
-                            className="btn btn-dark btn-block"
-                            onClick={clearAll}
-                          >
-                            Clear
-                          </button>
-                        </div>
-                      )}
-                    </form>
-                  </div>
-                </div>
+        <div className="col">
+          <div className="card bg-dark">
+            <div className="profile-card text-center">
+              <div className="profile-info">
+                <img
+                  className="profile-pic"
+                  style={{ width: "50%", height: "50%" }}
+                  src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/hinecergvkuka9hew6jt/custom-nike-react-element-55-by-you.jpg"
+                  alt="Sneakers"
+                />
+                <h2>Nike React Element 55</h2>
+                <h6>
+                  Price: <b>R2099</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>6,7,8,9</b>
+                </h6>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* CARD 4 */}
-          <div className="col">
-            <button
-              className="card bg-dark"
-              data-toggle="modal"
-              data-target="#myModal6"
-            >
-              <div className="profile-card text-center">
-                <div className="profile-info">
-                  <img
-                    className="profile-pic"
-                    style={{ width: "50%", height: "50%" }}
-                    src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/a73bc3ac-c29c-4932-89f4-90456cc4d831/air-force-1-07-craft-shoe-5zFRLc.jpg"
-                    alt="Sneakers"
-                  />
-                  <h2> Air Force 1</h2>
-                  <h6>YOYO</h6>
-                  <h6>YOYO</h6>
-                  <h6>YOYO</h6>
-                </div>
+        {/* CARD 4 */}
+        <div className="col">
+          <button
+            className="card bg-dark"
+            data-toggle="modal"
+            data-target="#myModal4"
+          >
+            <div className="profile-card text-center">
+              <div className="profile-info">
+                <img
+                  className="profile-pic"
+                  style={{ width: "50%", height: "50%" }}
+                  src="https://assets.superbalistcdn.co.za/500x720/filters:quality(75):format(jpg)/1702958/original.jpg"
+                  alt="Sneakers"
+                />
+                <h2>Adidas Ozweego adiprene</h2>
+                <h6>
+                  Price: <b>R949</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>7,9</b>
+                </h6>
               </div>
-            </button>
-            <p>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={() => setCurrent(sneaker)}
-              >
-                Customize
-              </button>
-              <button className="btn btn-danger btn-sm" onClick={onDelete}>
-                Details
-              </button>
-            </p>
-          </div>
-          {/* Modal */}
-          <div id="myModal6" className="modal fade" role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h4 className="modal-title">Profile Details</h4>
-                  <button type="button" className="close" data-dismiss="modal">
-                    &times;
-                  </button>
-                </div>
+            </div>
+          </button>
+        </div>
+      </div>
 
-                <div className="modal-body">
-                  <form onSubmit={onSubmit}>
-                    <h2 className="text-primary">Sneakers</h2>
-                    <input
-                      type="text"
-                      placeholder="Make"
-                      name="make"
-                      value={make}
-                      onChange={onChange}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Brand"
-                      name="brand"
-                      value={brand}
-                      onChange={onChange}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Price"
-                      name="price"
-                      value={price}
-                      onChange={onChange}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Size"
-                      name="size"
-                      value={size}
-                      onChange={onChange}
-                    />
-                    {/* <!-- Switch --> */}
-                    <div className="switch">
-                      <label>
-                        Available
-                        <input type="checkbox" name="type" />
-                        <span className="lever"></span>
-                      </label>
-                    </div>
-                    <h5>Sneakerton</h5>
-                    <input
-                      type="radio"
-                      name="type"
-                      value="exclusive"
-                      checked={type === "exclusive"}
-                      onChange={onChange}
-                    />{" "}
-                    Exclusive{" "}
-                    <input
-                      type="radio"
-                      name="type"
-                      value="standard"
-                      checked={type === "standard"}
-                      onChange={onChange}
-                    />{" "}
-                    Standard{" "}
-                    <div>
-                      <input
-                        type="submit"
-                        value={current ? "Update Sneaker" : "Add Sneaker"}
-                        className="btn btn-block"
-                      />
-                    </div>
-                    {current && (
-                      <div>
-                        <button
-                          className="btn btn-dark btn-block"
-                          onClick={clearAll}
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    )}
-                  </form>
-                </div>
+      <div className="row">
+        {/* CARD 5 */}
+        <div className="col">
+          <div className="card bg-dark">
+            <div className="profile-card text-center">
+              <div className="profile-info">
+                <img
+                  className="profile-pic"
+                  style={{ width: "50%", height: "50%" }}
+                  src="https://images.puma.net/images/372429/01/fnd/ZAF/w/1000/h/1000/bg/255,255,255"
+                  alt="Sneakers"
+                />
+                <h2>Puma RS-X MOVE TRAINERS</h2>
+                <h6>
+                  Price: <b>R2999</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>8</b>
+                </h6>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* CARD 6 */}
+        <div className="col">
+          <button
+            className="card bg-dark"
+            data-toggle="modal"
+            data-target="#myModal4"
+          >
+            <div className="profile-card text-center">
+              <div className="profile-info">
+                <img
+                  className="profile-pic"
+                  style={{ width: "50%", height: "50%" }}
+                  src="https://cdn-images.farfetch-contents.com/15/05/76/88/15057688_25617122_1000.jpg"
+                  alt="Sneakers"
+                />
+                <h2>Nike Air Jordan 4 Retro Black Cat 2020</h2>
+                <h6>
+                  Price: <b>R3199</b>
+                </h6>
+                <h6>
+                  Sizes available: <b>6,9</b>
+                </h6>
+              </div>
+            </div>
+          </button>
         </div>
       </div>
     </div>
   );
-};
-
-SneakerCards.propTypes = {
-  sneaker: PropTypes.object.isRequired,
 };
 
 export default SneakerCards;

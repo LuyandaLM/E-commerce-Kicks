@@ -1,15 +1,19 @@
 import React from "react";
 
-const Home = () => {
+const About = () => {
   return (
     <div>
       <h1>About This App</h1>
-      <p>This is a full stack react app for selling sneakers</p>
-      <p className="bg-dark p">
+      <h6>
+        <strong>
+          <b>This is a full stack react app for selling sneakers</b>
+        </strong>
+      </h6>
+      <h6 className="bg-dark p">
         <strong>Version: </strong> 1.0.0
-      </p>
+      </h6>
     </div>
   );
 };
 
-export default Home;
+export default About;

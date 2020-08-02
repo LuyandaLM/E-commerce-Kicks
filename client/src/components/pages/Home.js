@@ -13,6 +13,7 @@ const Home = () => {
     <div className="container">
       <div>
         <SneakerCarousel />
+        <h1>Latest Releases:</h1>
         <SneakerCards />
       </div>
     </div>

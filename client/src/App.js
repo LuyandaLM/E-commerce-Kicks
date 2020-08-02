@@ -4,6 +4,8 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+
+import ContactUs from "./components/pages/ContactUs";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alerts from "./components/layout/Alerts";
@@ -36,6 +38,7 @@ const App = () => {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/products" component={Products} />
+                  <Route exact path="/contact" component={ContactUs} />
                 </Switch>
               </div>
               <Footer fixed="bottom" />
