@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import SneakerContext from "../../context/sneaker/sneakerContext";
+import AlertContext from "../../context/alert/alertContext";
 
 const SneakerItem = ({ sneaker }) => {
+  const alertContext = useContext(AlertContext);
   const sneakerContext = useContext(SneakerContext);
   const { deleteSneaker, setCurrent, clearCurrent } = sneakerContext;
 
+  const { setAlert } = alertContext;
   const { _id, make, brand, price, type, size } = sneaker;
+
+  const onChange = (e) =>
+    setAlert(
+      "Your order has been processed, your reference number is 4y756dgf434re9762"
+    );
 
   const onDelete = () => {
     deleteSneaker(_id);
@@ -52,6 +60,9 @@ const SneakerItem = ({ sneaker }) => {
           onClick={() => setCurrent(sneaker)}
         >
           Customize
+        </button>
+        <button className="btn btn-danger btn-sm" onClick={onChange}>
+          Proceed To Checkout
         </button>
         <button className="btn btn-danger btn-sm" onClick={onDelete}>
           Delete

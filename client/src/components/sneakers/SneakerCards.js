@@ -1,12 +1,19 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const SneakerCards = () => {
   return (
     <div className="container">
+      <div>
+        <h2>LATEST RELEASES</h2>
+      </div>
       <div className="row">
         {/* CARD 1 */}
         <div className="col">
-          <div className="card bg-dark">
+          <div
+            className="card bg-dark"
+            style={{ width: "100%", height: "95%" }}
+          >
             <div className="profile-card text-center">
               <div className="profile-info">
                 <img
@@ -22,6 +29,9 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>7</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
           </div>
@@ -29,10 +39,9 @@ const SneakerCards = () => {
 
         {/* CARD 2 */}
         <div className="col">
-          <button
+          <div
             className="card bg-dark"
-            data-toggle="modal"
-            data-target="#myModal4"
+            style={{ width: "100%", height: "95%" }}
           >
             <div className="profile-card text-center">
               <div className="profile-info">
@@ -49,16 +58,22 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>6,8,9</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
 
       <div className="row">
         {/* CARD 3 */}
         <div className="col">
-          <div className="card bg-dark">
+          <div
+            className="card bg-dark"
+            style={{ width: "100%", height: "95%" }}
+          >
             <div className="profile-card text-center">
               <div className="profile-info">
                 <img
@@ -74,6 +89,9 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>6,7,8,9</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
           </div>
@@ -81,10 +99,9 @@ const SneakerCards = () => {
 
         {/* CARD 4 */}
         <div className="col">
-          <button
+          <div
             className="card bg-dark"
-            data-toggle="modal"
-            data-target="#myModal4"
+            style={{ width: "100%", height: "95%" }}
           >
             <div className="profile-card text-center">
               <div className="profile-info">
@@ -101,16 +118,22 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>7,9</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
 
       <div className="row">
         {/* CARD 5 */}
         <div className="col">
-          <div className="card bg-dark">
+          <div
+            className="card bg-dark"
+            style={{ width: "100%", height: "95%" }}
+          >
             <div className="profile-card text-center">
               <div className="profile-info">
                 <img
@@ -126,6 +149,9 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>8</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
           </div>
@@ -133,16 +159,15 @@ const SneakerCards = () => {
 
         {/* CARD 6 */}
         <div className="col">
-          <button
+          <div
             className="card bg-dark"
-            data-toggle="modal"
-            data-target="#myModal4"
+            style={{ width: "100%", height: "95%" }}
           >
             <div className="profile-card text-center">
               <div className="profile-info">
                 <img
                   className="profile-pic"
-                  style={{ width: "50%", height: "50%" }}
+                  style={{ width: "40%", height: "50%" }}
                   src="https://cdn-images.farfetch-contents.com/15/05/76/88/15057688_25617122_1000.jpg"
                   alt="Sneakers"
                 />
@@ -153,9 +178,12 @@ const SneakerCards = () => {
                 <h6>
                   Sizes available: <b>6,9</b>
                 </h6>
+                <Button variant="primary" href="/products">
+                  Add to Cart
+                </Button>{" "}
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </div>

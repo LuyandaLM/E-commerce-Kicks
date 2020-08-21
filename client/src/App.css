@@ -37,8 +37,9 @@ ul {
 }
 
 img {
-  width: 100%;
-  border: orangered solid 3px;
+  border: yellow solid 3px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Utilities */
@@ -111,7 +112,7 @@ img {
 /* Cards */
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
+  border: orangered 3px solid;
   margin: 0.7rem 0;
 }
 
@@ -383,6 +384,7 @@ table th {
 /* Navbar */
 .navbar {
   display: flex;
+  flex-shrink: inherit;
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 2rem;
@@ -396,6 +398,7 @@ table th {
 
 .navbar ul {
   display: flex;
+  flex-wrap: inherit;
 }
 
 .navbar a {
@@ -473,39 +476,61 @@ table th {
   height: 100px;
   width: 100px;
 }
+.profile-pic {
+  max-width: 50% !important;
+  max-height: 50% !important;
+}
 
 i {
   color: orange !important;
 }
 
+/* This only changes this particular animation duration */
+.animate__animated.animate__bounce {
+  --animate-duration: 2s;
+}
+
+/* This changes all the animations globaly */
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
+}
+
+.my-element {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+
 h1 {
-  color: orange !important;
-  text-shadow: orangered 4px 4px !important;
-  position: absolute center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: yellow !important;
+  text-decoration: orangered;
+  position: absolute center !important;
+  font-family: Impact, Charcoal, sans-serif;
+  text-decoration: red underline;
+  background-color: black;
+  border: orange solid 2px;
+  padding: 10px;
+}
+
+h2 {
+  color: yellow !important;
+  text-decoration: orangered;
+  position: absolute center !important;
+  font-family: Impact, Charcoal, sans-serif;
+  text-decoration: red underline;
+  background-color: black;
+  border: orange solid 2px;
+  padding: 10px;
+  margin-top: 15px;
 }
 
 h4 {
   color: orange !important;
   text-shadow: black 4px 4px !important;
   opacity: 0.8;
-}
-
-@mixin center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/*--------------------
-Body
----------------------*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 body,
@@ -516,169 +541,6 @@ html {
 
 body {
   background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
-}
-
-/*--------------------
-Shop Card
----------------------*/
-.shop-card {
-  @include center;
-  width: 350px;
-  background: #f5f5f5;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  border-radius: 5px;
-  padding: 25px;
-  text-align: center;
-  z-index: 2;
-
-  figure {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    outline: none !important;
-
-    & img {
-      margin: -95px 0 -60px;
-      width: 100%;
-    }
-  }
-
-  .title {
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 30px;
-    color: #23211f;
-    margin-bottom: 5px;
-  }
-
-  .desc {
-    font-size: 17px;
-    opacity: 0.8;
-    margin-bottom: 3px;
-  }
-
-  .cta {
-    padding: 20px 20px 5px;
-
-    &::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  }
-
-  .price {
-    float: left;
-    color: #ff3100;
-    font-size: 22px;
-    font-weight: 900;
-    padding-top: 2px;
-    transition: color 0.3s ease-in-out;
-    margin-top: 4px;
-  }
-
-  .btn {
-    position: relative;
-    z-index: 1;
-    float: right;
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #ff3100;
-    padding: 12px 18px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    line-height: 0.95;
-    border: none;
-    background: none;
-    outline: none;
-    border: 1px solid #ff3100;
-    border-radius: 20px;
-    overflow: hidden;
-
-    & .bg {
-      width: 101%;
-      height: 101%;
-      display: block !important;
-      z-index: -1;
-      opacity: 0;
-      transition: all 0.3s ease-in-out;
-      background: linear-gradient(135deg, #a61322, #d33f34);
-    }
-
-    &:hover {
-      color: #fff !important;
-      border: 1px solid transparent !important;
-
-      & .bg {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-/*--------------------
-Slick Dots
----------------------*/
-.slick-dots {
-  bottom: -30px;
-
-  a {
-    position: relative;
-    display: block;
-    width: 16px;
-    height: 16px;
-  }
-
-  span {
-    @include center;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-
-  circle {
-    fill: none;
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-dasharray: 39 39;
-    stroke-dashoffset: 39;
-    transition: all 0.9s ease-in-out;
-    transition: stroke-dashoffset 0.5s;
-  }
-
-  .slick-active circle {
-    stroke-dashoffset: 0;
-  }
-}
-
-/*--------------------
-Background
---------------------*/
-.bg {
-  @include center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
-  z-index: 1;
-  display: none;
-}
-
-.the-most {
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  width: 50vw;
-  max-width: 200px;
-  padding: 10px;
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
 }
 
 b {

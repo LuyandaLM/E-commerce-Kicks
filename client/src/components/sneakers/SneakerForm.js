@@ -49,7 +49,7 @@ const SneakerForm = () => {
     <div className="card bg-dark">
       <form onSubmit={onSubmit}>
         <h2 className="text-warning">
-          {current ? "Customize Sneaker" : "Add Sneaker"}
+          {current ? "Customize Sneaker" : "Add Sneaker to Cart"}
         </h2>
         <input
           type="text"
@@ -107,7 +107,7 @@ const SneakerForm = () => {
         <div>
           <input
             type="submit"
-            value={current ? "Customize Sneaker" : "Add Sneaker"}
+            value={current ? "Customize Sneaker" : "Add Sneaker to Cart"}
             className="btn btn-block"
           />
         </div>

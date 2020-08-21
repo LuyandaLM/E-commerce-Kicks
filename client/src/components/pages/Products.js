@@ -13,10 +13,14 @@ const Products = () => {
   return (
     <div className="grid-2">
       <div>
-        <SneakerFilter />
+        <h2 className="animate__animated animate__bounce">CART</h2>
         <Sneakers />
+        <SneakerFilter />
       </div>
       <div>
+        <h2 className="animate__animated animate__bounce">
+          CART CUSTOMIZATION
+        </h2>
         <SneakerForm />
       </div>
     </div>

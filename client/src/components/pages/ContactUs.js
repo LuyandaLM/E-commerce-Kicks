@@ -1,18 +1,24 @@
 import React from "react";
 
-const ContactUs = () => {
-  return (
-    <div className="card bg-dark">
-      <h1>Contact Us</h1>
-      {/* <a href="mailto:someone@yoursite.com? &subject=Big%20News&body=Email-content-here">
-        <i class="fas fa-envelope-square"></i> Email Us
-      </a> */}
+export default class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.submitForm = this.submitForm.bind(this);
+    this.state = {
+      status: "",
+    };
+  }
 
+  render() {
+    const { status } = this.state;
+    return (
       <form
-        action="mailto:luyandamabozo@gmail.com"
-        method="post"
-        enctype="text/plain"
+        onSubmit={this.submitForm}
+        action="https://formspree.io/mknqabjo"
+        method="POST"
+        className="card bg-dark"
       >
+        <h2>Contact Us</h2>
         <h6>
           <b>Name:</b>
         </h6>
@@ -32,15 +38,32 @@ const ContactUs = () => {
         <input type="text" name="comment" size="50" required />
         <br />
         <br />
-        <button className="btn btn-warning btn-sm">
-          <input type="submit" value="Send" required />
-        </button>
-        <button className="btn btn-warning btn-sm">
-          <input type="reset" value="Reset" required />
-        </button>
+        {status === "SUCCESS" ? (
+          <h2>Thanks, have a good day further!</h2>
+        ) : (
+          <button className="btn btn-danger">Submit</button>
+        )}
+        {status === "ERROR" && <h2>Ooops! There was an error.</h2>}
       </form>
-    </div>
-  );
-};
+    );
+  }
 
-export default ContactUs;
+  submitForm(ev) {
+    ev.preventDefault();
+    const form = ev.target;
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        form.reset();
+        this.setState({ status: "SUCCESS" });
+      } else {
+        this.setState({ status: "ERROR" });
+      }
+    };
+    xhr.send(data);
+  }
+}

@@ -53,7 +53,13 @@ const Navbar = ({ title, icon }) => {
   return (
     <div className="navbar">
       <h1>
-        <i className={icon}> {title} </i>
+        {title}{" "}
+        <img
+          className={icon}
+          src="https://cf.shopee.ph/file/542912e5502dc75ba2db31bd0c43c133"
+          style={{ width: "70px", height: "70px" }}
+          alt="navbar pic"
+        />{" "}
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>

@@ -44,9 +44,9 @@ const Login = (props) => {
 
   return (
     <div className="form-container bg-dark">
-      <h1>
+      <h2>
         Account <span>Login</span>
-      </h1>
+      </h2>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email Address</label>

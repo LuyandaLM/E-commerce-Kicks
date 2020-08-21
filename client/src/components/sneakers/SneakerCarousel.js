@@ -7,12 +7,12 @@ const SneakerCarousel = () => {
       <Carousel>
         <Carousel.Item>
           <div>
-            <h1>LATEST RELEASES!!!</h1>
+            <h2>LATEST RELEASES!!!</h2>
           </div>
           <video
             className="d-block w-100"
-            controls
             autoPlay
+            controls
             name="media"
             src="https://static.nike.com/a/videos/q_90,vc_vp9/dyrkm7tuztoh67dampbe/video.webm"
             alt="First slide"
@@ -21,19 +21,24 @@ const SneakerCarousel = () => {
         </Carousel.Item>
         <Carousel.Item>
           <h1>GET YOURS NOW!!!</h1>
-          <img
+          <video
             className="d-block w-100"
-            src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/7e856e20-13ff-4a1f-9cec-2c840c592872/react-element-55-shoe-3B4g5L.jpg"
+            autoPlay
+            controls
+            name="media"
+            src="https://static.nike.com/a/videos/q_90,vc_vp9/6fa1975a-8252-4e38-9706-26f4c742bfe3/video.webm"
             alt="Second slide"
-            style={{ height: "600px", width: "400px" }}
           />
         </Carousel.Item>
 
         <Carousel.Item>
           <h1>@KICKIN IT</h1>
-          <img
+          <video
             className="d-block w-100"
-            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/c159930e-b1f0-4693-8d7f-226d2f8031f6/custom-nike-air-force-1-by-you.jpg"
+            autoPlay
+            controls
+            name="media"
+            src="https://static.nike.com/a/videos/q_90,vc_vp9/yp4mqubjdcjkronvu5td/video.webm"
             alt="Third slide"
           />
         </Carousel.Item>
